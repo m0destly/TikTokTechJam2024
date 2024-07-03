@@ -3,6 +3,7 @@ import { View, TextInput, Button, StyleSheet, Text, Alert } from 'react-native';
 import { login } from '../services/authService';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { useAppContext } from '../global/AppContext';
+import PhoneAuth from '../components/PhoneAuth';
 
 const LoginScreen = ({ navigation }: any) => {
   const [username, setUsername] = useState('');
@@ -56,6 +57,9 @@ const LoginScreen = ({ navigation }: any) => {
       </TouchableHighlight>
       {error && <Text style={styles.error}>{error}</Text>}
       <Button title="Login" onPress={handleLogin} />
+      <View>
+        <PhoneAuth/>
+      </View>
     </View>
   );
 }
@@ -63,7 +67,7 @@ const LoginScreen = ({ navigation }: any) => {
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', padding: 16 },
   input: { height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 12, paddingLeft: 8 },
-  error: { color: 'red', marginBottom: 12 }
+  error: { color: 'red', marginBottom: 12 },
 });
 
 export default LoginScreen;
