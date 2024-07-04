@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, TextInput, Button, StyleSheet, Text, Alert } from 'react-native';
 import { login } from '../services/authService';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { useAppContext } from '../global/AppContext';
-import PhoneAuth from '../components/PhoneAuth';
+// import PhoneAuth from '../components/PhoneAuth';
 import AuthOtp from '../components/AuthOtp';
+import axios from 'axios';
 
 const LoginScreen = ({ navigation }: any) => {
   const [username, setUsername] = useState('');
@@ -12,6 +13,17 @@ const LoginScreen = ({ navigation }: any) => {
   const [error, setError] = useState<string | null>(null);
   const { testLogin, setLogin } = useAppContext();
 
+  useEffect(() => {
+    //axios.get('http://localhost:3000/users')
+    axios.get('http://10.0.2.2:3000/users')
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching users:', error);
+      });
+  }, []);
+  
   const handleLogin = async () => {
     try {
       await login(username, password);
