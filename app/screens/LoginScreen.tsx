@@ -4,6 +4,7 @@ import { login } from '../services/authService';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { useAppContext } from '../global/AppContext';
 import PhoneAuth from '../components/PhoneAuth';
+import AuthOtp from '../components/AuthOtp';
 
 const LoginScreen = ({ navigation }: any) => {
   const [username, setUsername] = useState('');
@@ -30,7 +31,7 @@ const LoginScreen = ({ navigation }: any) => {
 
   return (
     <View style={styles.container}>
-      <TextInput
+      {/* <TextInput
         style={styles.input}
         placeholder="Username"
         value={username}
@@ -59,7 +60,8 @@ const LoginScreen = ({ navigation }: any) => {
       <Button title="Login" onPress={handleLogin} />
       <View>
         <PhoneAuth/>
-      </View>
+      </View> */}
+      <AuthOtp/>
     </View>
   );
 }

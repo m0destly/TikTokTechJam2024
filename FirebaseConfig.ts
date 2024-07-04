@@ -3,7 +3,7 @@ import 'firebase/compat/auth';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyBMpaVzuq8NI7bCTOepv4ET5Ia-UfHgHYY",
   authDomain: "tiktoktechjam-cd454.firebaseapp.com",
   projectId: "tiktoktechjam-cd454",
