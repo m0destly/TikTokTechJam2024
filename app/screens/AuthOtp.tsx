@@ -4,7 +4,7 @@ import { FirebaseRecaptchaVerifierModal } from 'expo-firebase-recaptcha';
 import { firebaseConfig } from '@/FirebaseConfig';
 import firebase from 'firebase/compat';
 
-const AuthOtp = () => {
+const AuthOtp = ({ navigation }: any) => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [code, setCode] = useState('');
     const [verificationId, setVerificationId] = useState('');
@@ -36,6 +36,7 @@ const AuthOtp = () => {
                 setCode('');
                 setMessage('Verified correct');
                 Alert.alert("Login successful");
+                navigation.navigate("Login");
             })
             .catch((error) => {
                 Alert.alert("Login failed: " + error.message);
