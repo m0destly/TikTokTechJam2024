@@ -3,9 +3,11 @@ import { View, TextInput, Button, StyleSheet, Text, Alert } from 'react-native';
 import { login } from '../services/authService';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { useAppContext } from '../global/AppContext';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import AuthOtp from '../screens/AuthOtp';
 import PhoneAuth from '../components/PhoneAuth';
 import axios from 'axios';
+import { auth } from '@/FirebaseConfig';
 
 const LoginScreen = ({ navigation }: any) => {
   const [username, setUsername] = useState('');
@@ -23,19 +25,19 @@ const LoginScreen = ({ navigation }: any) => {
         console.error('Error fetching users:', error);
       });
   }, []);
-  
+
   const handleLogin = async () => {
-    try {
-      await login(username, password);
-      Alert.alert("Successsful login!");
-      console.log("Try Block: ");
-      setLogin(true);
-      
-    } catch (error: any) {
-      Alert.alert('Login failed', error.message);
-      setError('Login failed ' + error.message);
-    }
-  };
+      auth.signInWithEmailAndPassword(username, password)
+        .then((userCredential) => {
+          // handles logic of successful login
+          var user = userCredential.user
+          setLogin(true);
+        })
+        .catch((error) => {
+          Alert.alert("Error", error.message);
+        })
+  }
+
 
   const onPressRegister = () => {
     navigation.navigate('Register');

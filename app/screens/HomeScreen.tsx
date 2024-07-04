@@ -1,9 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
+import { useAppContext } from '../global/AppContext';
 
 export default function HomeScreen({ navigator} :any) {
+
+  const { testLogin, setLogin } = useAppContext();
+
   const onLogOut = () => {
-    console.log("Log Out")
+    setLogin(false);
+    console.log("Logged Out")
   }
 
   return (
@@ -28,3 +33,5 @@ const styles = StyleSheet.create({
     alignItems: 'center', 
     fontSize: 200,}
 });
+
+
