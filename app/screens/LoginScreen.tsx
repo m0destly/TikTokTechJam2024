@@ -17,7 +17,7 @@ const LoginScreen = ({ navigation }: any) => {
       await login(username, password);
       Alert.alert("Successsful login!");
       console.log("Try Block: ");
-      //setLogin(true);
+      setLogin(true);
       
     } catch (error: any) {
       Alert.alert('Login failed', error.message);
