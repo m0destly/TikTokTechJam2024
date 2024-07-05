@@ -2,40 +2,46 @@ import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text, Alert } from 'react-native';
 import { register } from '../services/authService';
 import { auth } from '@/FirebaseConfig';
+import Link from '../components/Link';
+import axios from 'axios';
+import { useAppContext } from '../global/AppContext';
 
 const RegisterScreen = ({ navigation }: any) => {
-    const [username, setUsername] = useState('');
-    const[password, setPassword] = useState('');
-    const[message, setMessage] = useState('');
+    const { phone } = useAppContext();
+    const [user, setUser] = useState('');
+    const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
+    const [name, setName] = useState('');
 
-    // const handleRegister = async () => {
-    //     try {
-    //         await register(username, password);
-    //         setMessage('User registered. You can now log in.');
-    //         Alert.alert('successful registration');
-    //         navigation.navigate('Login');
-    //     } catch (error: any) {
-    //         setMessage('Registration failed.' + error.message)
-    //     }
-    // }
-    const handleRegister = async () => {
-      auth.createUserWithEmailAndPassword(username, password)
-        .then((userCredential) => {
-          Alert.alert("Success", "You have created a new account");
+    const registerUser = async () => {
+      try {
+          const response = await axios.post('http://localhost:3000/register', {
+              user,
+              password,
+              name,
+              phone,
+          });
+          console.log(response.data);
           navigation.navigate('Login');
-        })
-        .catch((error) => {
-          Alert.alert("Error", "Unable to create an account");
-        })
-    }
+      } catch (error) {
+          console.error('Registration error:', error);
+          Alert.alert("Error!", "Please Try again later");
+      }
+  };
 
     return (
         <View style={styles.container}>
           <TextInput
             style={styles.input}
+            placeholder='Full Name'
+            value={name}
+            onChangeText={setName}
+          />
+          <TextInput
+            style={styles.input}
             placeholder="Username"
-            value={username}
-            onChangeText={setUsername}
+            value={user}
+            onChangeText={setUser}
           />
           <TextInput
             style={styles.input}
@@ -44,7 +50,11 @@ const RegisterScreen = ({ navigation }: any) => {
             value={password}
             onChangeText={setPassword}
           />
-          <Button title="Register" onPress={handleRegister} />
+          <TextInput
+            value={phone}
+            editable={false}
+          />
+          <Button title="Register" onPress={registerUser} />
           {message && <Text>{message}</Text>}
         </View>
       );

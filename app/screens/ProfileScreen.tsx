@@ -4,7 +4,7 @@ import { getProfile, logout } from '../services/authService';
 
 export default function ProfileScreen({ navigation }: any) {
   const [user, setUser] = useState<any>(null);
-
+  
   useEffect(() => {
     const fetchUser = async () => {
       const profile = await getProfile();

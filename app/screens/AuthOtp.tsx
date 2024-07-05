@@ -3,9 +3,10 @@ import React, { useRef, useState } from 'react';
 import { FirebaseRecaptchaVerifierModal } from 'expo-firebase-recaptcha';
 import { firebaseConfig } from '@/FirebaseConfig';
 import firebase from 'firebase/compat';
+import { useAppContext } from '../global/AppContext';
 
 const AuthOtp = ({ navigation }: any) => {
-    const [phoneNumber, setPhoneNumber] = useState('');
+  const {phone, setPhone} = useAppContext();
     const [code, setCode] = useState('');
     const [verificationId, setVerificationId] = useState('');
     const [message, setMessage] = useState('');
@@ -16,11 +17,11 @@ const AuthOtp = ({ navigation }: any) => {
         try {
             const phoneProvider = new firebase.auth.PhoneAuthProvider();
             phoneProvider
-                .verifyPhoneNumber(phoneNumber, recaptchaVerifier.current)
+                .verifyPhoneNumber(phone, recaptchaVerifier.current)
                 .then(setVerificationId);
             setMessage('Code sent');
             setDisplay(false);
-            console.log(phoneNumber);
+            console.log(phone);
         } catch (error: any) {
             Alert.alert("Error!", error.message);
         }
@@ -52,8 +53,8 @@ const AuthOtp = ({ navigation }: any) => {
           <View id="recaptcha-container" />
           <TextInput
             placeholder="Phone Number"
-            value={phoneNumber}
-            onChangeText={setPhoneNumber}
+            value={phone}
+            onChangeText={setPhone}
             keyboardType="phone-pad"
             autoComplete='tel'
             editable={display}
