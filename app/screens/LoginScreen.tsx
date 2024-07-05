@@ -12,10 +12,6 @@ const LoginScreen = ({ navigation }: any) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
 
-  // useEffect(() => {
-  //   console.log('Token updated');
-  // }, [token]);
-
   const handleLogin = async () => {
     try {
       const response = await axios.post('http://localhost:3000/login', {
@@ -25,27 +21,10 @@ const LoginScreen = ({ navigation }: any) => {
       });
       setToken(response.data.token);
       console.log('Logged in successfully:', response.data);
-      console.log(token);
-      console.log(token.length);
-
     } catch (error: any) {
         setError(error.message);
         console.error('Login error:', error);
     }
-    
-    // await axios.post('http://localhost:3000/login', {
-    //   user,
-    //   password,
-    //   phone,
-    // })
-    // .then((response) => {
-    //   setToken(response.data.token);
-    //   console.log(token);
-    // }) 
-    // .catch((error) => {
-    //   setError(error.message);
-    //   console.error('Login error: ' + error);
-    // }); 
   };
 
   const onPressRegister = () => {

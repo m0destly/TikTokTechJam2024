@@ -1,20 +1,3 @@
-// import React, { createContext, useContext, useState } from 'react';
-
-// // Create a provider component
-// export const AppProvider = ({ children }: any) => {
-//   const [phone, setPhone] = useState('');
-//   const [token, setToken] = useState('');
-
-//   return (
-//     <AppContext.Provider value={{ phone, setPhone, token, setToken }}>
-//       {children}
-//     </AppContext.Provider>
-//   );
-// };
-
-// // Custom hook to use the context
-// export const useAppContext = () => useContext(AppContext);
-
 import React, { createContext, useContext, useState } from 'react';
 
 // Define the type of the context value

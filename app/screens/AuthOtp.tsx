@@ -7,7 +7,6 @@ import { useAppContext } from '../global/AppContext';
 
 const AuthOtp = ({ navigation }: any) => {
   const {phone, setPhone} = useAppContext();
-    //const [phoneNumber, setPhoneNumber] = useState('');
     const [code, setCode] = useState('');
     const [verificationId, setVerificationId] = useState('');
     const [message, setMessage] = useState('');

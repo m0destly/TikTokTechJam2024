@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 import { useAppContext } from '../global/AppContext';
 
-export default function HomeScreen({ navigator} :any) {
+export default function HomeScreen({ navigator } :any) {
 
   const { token } = useAppContext();
 

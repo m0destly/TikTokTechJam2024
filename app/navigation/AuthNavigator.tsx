@@ -9,13 +9,11 @@ const AuthStack = createStackNavigator();
 
 const AuthNavigator = () => {
   return (
-    <AppProvider>
-      <AuthStack.Navigator>
-        <AuthStack.Screen name="AuthOtp" component={AuthOtp} />
-        <AuthStack.Screen name="Login" component={LoginScreen} />
-        <AuthStack.Screen name="Register" component={RegisterScreen} />
-      </AuthStack.Navigator>
-    </AppProvider>
+    <AuthStack.Navigator>
+      <AuthStack.Screen name="AuthOtp" component={AuthOtp} />
+      <AuthStack.Screen name="Login" component={LoginScreen} />
+      <AuthStack.Screen name="Register" component={RegisterScreen} />
+    </AuthStack.Navigator>
   );
 }
 
