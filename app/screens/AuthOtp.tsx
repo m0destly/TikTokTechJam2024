@@ -3,9 +3,11 @@ import React, { useRef, useState } from 'react';
 import { FirebaseRecaptchaVerifierModal } from 'expo-firebase-recaptcha';
 import { firebaseConfig } from '@/FirebaseConfig';
 import firebase from 'firebase/compat';
+import { useAppContext } from '../global/AppContext';
 
 const AuthOtp = ({ navigation }: any) => {
-    const [phoneNumber, setPhoneNumber] = useState('');
+  const {phoneNumber, setPhoneNumber} = useAppContext();
+    //const [phoneNumber, setPhoneNumber] = useState('');
     const [code, setCode] = useState('');
     const [verificationId, setVerificationId] = useState('');
     const [message, setMessage] = useState('');

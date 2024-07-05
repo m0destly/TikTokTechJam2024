@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text, Alert } from 'react-native';
 import { register } from '../services/authService';
 import { auth } from '@/FirebaseConfig';
+import Link from '../components/Link';
 
 const RegisterScreen = ({ navigation }: any) => {
     const [username, setUsername] = useState('');
@@ -31,7 +32,7 @@ const RegisterScreen = ({ navigation }: any) => {
 
     return (
         <View style={styles.container}>
-          <TextInput
+          {/* <TextInput
             style={styles.input}
             placeholder="Username"
             value={username}
@@ -45,7 +46,8 @@ const RegisterScreen = ({ navigation }: any) => {
             onChangeText={setPassword}
           />
           <Button title="Register" onPress={handleRegister} />
-          {message && <Text>{message}</Text>}
+          {message && <Text>{message}</Text>} */}
+          <Link/>
         </View>
       );
 }

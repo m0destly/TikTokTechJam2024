@@ -6,10 +6,11 @@ const AppContext = createContext();
 // Create a provider component
 export const AppProvider = ({ children }: any) => {
   const [testLogin, setLogin] = useState(false);
-  console.log("From APP Context: " + testLogin);
+  const [phoneNumber, setPhoneNumber] = useState('');
+  // console.log("From APP Context: " + testLogin);
 
   return (
-    <AppContext.Provider value={{ testLogin, setLogin }}>
+    <AppContext.Provider value={{ testLogin, setLogin, phoneNumber, setPhoneNumber }}>
       {children}
     </AppContext.Provider>
   );
