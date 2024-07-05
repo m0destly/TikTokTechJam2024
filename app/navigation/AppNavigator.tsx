@@ -8,11 +8,11 @@ import { useAppContext } from '../global/AppContext';
 const AppStack = createStackNavigator();
 
 const AppNavigator = () => {
-  const { testLogin } = useAppContext();
+  const { token } = useAppContext();
 
   return (
     <AppStack.Navigator>
-      {testLogin ? (
+      {token ? (
         <>
           <AppStack.Screen name="Home" component={HomeScreen} />
           <AppStack.Screen name="Profile" component={ProfileScreen} />

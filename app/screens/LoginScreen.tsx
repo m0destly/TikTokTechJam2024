@@ -3,41 +3,50 @@ import { View, TextInput, Button, StyleSheet, Text, Alert } from 'react-native';
 import { login } from '../services/authService';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { useAppContext } from '../global/AppContext';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import AuthOtp from '../screens/AuthOtp';
-import PhoneAuth from '../components/PhoneAuth';
 import axios from 'axios';
 import { auth } from '@/FirebaseConfig';
 
 const LoginScreen = ({ navigation }: any) => {
-  const [username, setUsername] = useState('');
+  const { phone, token, setToken } = useAppContext();
+  const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
-  const { testLogin, setLogin } = useAppContext();
 
-  useEffect(() => {
-    //axios.get('http://localhost:3000/users')
-    axios.get('http://10.0.2.2:3000/users')
-      .then(response => {
-        console.log(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching users:', error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   console.log('Token updated');
+  // }, [token]);
 
   const handleLogin = async () => {
-      auth.signInWithEmailAndPassword(username, password)
-        .then((userCredential) => {
-          // handles logic of successful login
-          var user = userCredential.user
-          setLogin(true);
-        })
-        .catch((error) => {
-          Alert.alert("Error", error.message);
-        })
-  }
+    try {
+      const response = await axios.post('http://localhost:3000/login', {
+        user,
+        password,
+        phone,
+      });
+      setToken(response.data.token);
+      console.log('Logged in successfully:', response.data);
+      console.log(token);
+      console.log(token.length);
 
+    } catch (error: any) {
+        setError(error.message);
+        console.error('Login error:', error);
+    }
+    
+    // await axios.post('http://localhost:3000/login', {
+    //   user,
+    //   password,
+    //   phone,
+    // })
+    // .then((response) => {
+    //   setToken(response.data.token);
+    //   console.log(token);
+    // }) 
+    // .catch((error) => {
+    //   setError(error.message);
+    //   console.error('Login error: ' + error);
+    // }); 
+  };
 
   const onPressRegister = () => {
     navigation.navigate('Register');
@@ -48,8 +57,8 @@ const LoginScreen = ({ navigation }: any) => {
       <TextInput
         style={styles.input}
         placeholder="Username"
-        value={username}
-        onChangeText={setUsername}
+        value={user}
+        onChangeText={setUser}
       />
       <TextInput
         style={styles.input}

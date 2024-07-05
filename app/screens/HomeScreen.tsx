@@ -4,11 +4,14 @@ import { useAppContext } from '../global/AppContext';
 
 export default function HomeScreen({ navigator} :any) {
 
-  const { testLogin, setLogin } = useAppContext();
+  const { token } = useAppContext();
 
   const onLogOut = () => {
-    setLogin(false);
     console.log("Logged Out")
+  }
+
+  const logToken = () => {
+    console.log(token);
   }
 
   return (
@@ -18,8 +21,8 @@ export default function HomeScreen({ navigator} :any) {
       </View>
       <View>
         <Button
-          onPress={onLogOut}
-          title="Log Out"
+          onPress={logToken}
+          title="Token"
         />
       </View>
     </View>
