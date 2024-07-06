@@ -53,14 +53,13 @@ const LoginScreen = ({ navigation }: any) => {
         activeOpacity={0.6}
         underlayColor="#DDDDDD"
         onPress={onPressRegister}
-        >
+      >
         <View style={styles.outerText}>
             <Text style={styles.innerText2}>Click </Text>
             <Text style={styles.innerText1}>here </Text>
             <Text style={styles.innerText2}>to register</Text>
         </View>
       </TouchableHighlight>
-
     </View>
   );
 }

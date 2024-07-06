@@ -6,6 +6,8 @@ type MyContextType = {
   setPhone: (value: string) => void;
   token: string;
   setToken: (value: string) => void;
+  userID: string;
+  setUserID: (value: string) => void;
 }
 
 // Create a context object
@@ -15,12 +17,15 @@ const AppContext = createContext<MyContextType | undefined>(undefined);
 export const AppProvider = ({ children }: any) => {
   const [phone, setPhone] = useState('');
   const [token, setToken] = useState('');
+  const [userID, setUserID] = useState('');
 
   const contextValue: MyContextType = {
     phone,
     setPhone,
     token,
     setToken,
+    userID,
+    setUserID,
   };
 
   return (

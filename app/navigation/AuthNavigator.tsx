@@ -3,7 +3,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import AuthOtp from '../screens/AuthOtp';
-import { AppProvider } from '../global/AppContext';
 
 const AuthStack = createStackNavigator();
 

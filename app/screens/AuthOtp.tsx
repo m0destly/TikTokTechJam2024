@@ -21,7 +21,6 @@ const AuthOtp = ({ navigation }: any) => {
                 .then(setVerificationId);
             setMessage('Code sent');
             setDisplay(false);
-            console.log(phone);
         } catch (error: any) {
             Alert.alert("Error!", error.message);
         }
@@ -36,7 +35,7 @@ const AuthOtp = ({ navigation }: any) => {
             .then(() => {
                 setCode('');
                 setMessage('Verified correct');
-                Alert.alert("Login successful");
+                Alert.alert("Verification success!");
                 navigation.navigate("Login");
             })
             .catch((error) => {
