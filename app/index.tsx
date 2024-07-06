@@ -1,3 +1,4 @@
+
 import { Text, View } from "react-native";
 import 'react-native-gesture-handler'
 import AppNavigator from "./navigation/AppNavigator";
@@ -9,4 +10,4 @@ export default function Index() {
       <AppNavigator/>
     </AppProvider>
   );
-}
+};
