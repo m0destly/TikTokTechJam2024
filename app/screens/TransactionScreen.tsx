@@ -89,7 +89,7 @@ const TransactionScreen = ({navigation} : any) => {
             <Text style={styles.title}>Transfer to Friends</Text>
             <TextInput
                 style={styles.input}
-                placeholder={isPhone ? "Phone" : "Username"}
+                placeholder={isPhone ? "Phone Number" : "Username"}
                 keyboardType={isPhone ? "phone-pad" : "default"}
                 value={isPhone ? phone : username}
                 onChangeText={isPhone ? setPhone : setUsername}

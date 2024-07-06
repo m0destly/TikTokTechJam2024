@@ -50,6 +50,10 @@ const AuthOtp = ({ navigation }: any) => {
                 firebaseConfig={firebaseConfig}
             />
           <View id="recaptcha-container" />
+          <Text>Include the country code (e.g. +65) and leave a space 
+            between the code and the rest of the number. 
+            There should be no other spaces or hyphens.
+          </Text>
           <TextInput
             placeholder="Phone Number"
             value={phone}
@@ -57,8 +61,9 @@ const AuthOtp = ({ navigation }: any) => {
             keyboardType="phone-pad"
             autoComplete='tel'
             editable={display}
-            style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 20 }}
+            style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 10, marginTop: 20 }}
           />
+          <Text>Example: +65 00000000</Text>
           <Button title="Send Verification SMS" onPress={sendVerification} />
           {verificationId && (
             <>
