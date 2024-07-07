@@ -15,9 +15,26 @@
 
 3. Start the local MySQL server and establish local connection
 
-4. Create database `tttj`
+4. Create database `your_database`
 
-5. Import the 2 tables, `users` and `transactions` .csv files to `tttj`
+5. Import the 3 tables `users`, `transactions` and `loans` .csv files to `your_database`
+
+6. Edit the Node.js server file to `your_user`, `your_password` and `your_database`
+   ```ruby
+   const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'your_user',
+    password: 'your_password',
+    database: 'your_database'
+   });
+
+   const pool = mysql.createPool({
+    host: 'localhost',
+    user: 'your_user',
+    password: 'your_password',
+    database: 'your_database'
+   });
+   ```
 
 6. Start the Node.js server file
    ```bash
@@ -32,5 +49,11 @@
 ## Test Account
 - Number: +65 12345678
 - Verification Code: 654321
-- Username:
-- Password: `wordpass`
+- Username: iancheah
+- Password: wordpass
+
+## Alternate Test Account 
+- Number: +65 12121212
+- Verification Code: 123456
+- Username: yunhong
+- Password: securepass
