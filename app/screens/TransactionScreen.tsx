@@ -4,13 +4,13 @@ import { useAppContext } from '../global/AppContext';
 import axios from 'axios';
 
 const TransactionScreen = ({navigation} : any) => {
-    const { userID } = useAppContext();
+    const { userID, userName } = useAppContext();
     const [username, setUsername] = useState('');
     const [phone, setPhone] = useState('');
     const [targetUser, setTargetUser] = useState('');
     const [targetID, setTargetID] = useState('');
     const [amount, setAmount] = useState('');
-    const [isPhone, setIsPhone] = useState(true);
+    const [isPhone, setIsPhone] = useState(false);
 
     const changeMode = () => {
         setIsPhone(!isPhone);
@@ -76,6 +76,8 @@ const TransactionScreen = ({navigation} : any) => {
                 fromUserId: parseInt(userID, 10),
                 toUserId: parseInt(targetID, 10),
                 amount: parseFloat(amount),
+                fromUser: userName,
+                toUser: targetUser,
             });
             Alert.alert(`You have successfully transferred ${amount} to ${targetUser}.`, response.data.message);
         } catch (error: any) {
@@ -109,7 +111,7 @@ const TransactionScreen = ({navigation} : any) => {
             )}
             {targetUser && amount && targetID && (
                 <>
-                    <Text> You are transferring {amount} to {targetUser} </Text>
+                    <Text> You are transferring ${amount} to {targetUser} </Text>
                 </>
             )}
             <Button title={isPhone ? "By Username" : "By Phone"} onPress={changeMode}/>

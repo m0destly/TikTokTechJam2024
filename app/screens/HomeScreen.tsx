@@ -5,11 +5,11 @@ import { Avatar, Button, Icon } from 'react-native-elements';
 import { useAppContext } from '../global/AppContext';
 import axios from 'axios';
 import QRCodeScanner from '../components/QRCodeScanner';
+import RecentTransactions from '../components/RecentTransactions';
 
 export default function HomeScreen({ navigation } :any) {
 
-  const { token, setToken, setUserID } = useAppContext();
-  const [name, setName] = useState('');
+  const { token, setToken, setUserID, userName, setUserName } = useAppContext();
   const [balance, setBalance] = useState('');
   const [debt, setDebt] = useState('');
   const [isCameraVisible, setIsCameraVisible] = useState(false);
@@ -27,11 +27,10 @@ export default function HomeScreen({ navigation } :any) {
           'x-access-token': token
         }
       });
-      setName(response.data.name);
+      setUserName(response.data.name);
       setBalance(response.data.balance);
       setDebt(response.data.amountOwed);
       setUserID(response.data.id);
-      console.log('User info:', response.data);
     } catch (error) {
       console.error('Failed to fetch user info:', error);
     }
@@ -68,17 +67,21 @@ export default function HomeScreen({ navigation } :any) {
       </View>
       <View style={styles.header}>
         <Text style={styles.title}>
-          Welcome back, {name}
+          Welcome back, {userName}
         </Text>
       </View>
       <View style={styles.body}>
         <View style={styles.balanceContainer}>
           <Text style={styles.balanceText}>Current Balance</Text>
-          <Text style={styles.balanceValue}>{balance}</Text>
+          <Text style={styles.balanceValue}>${balance}</Text>
         </View>
         <View style={styles.balanceContainer}>
           <Text style={styles.balanceText}>Amount you owe</Text>
-          <Text style={styles.balanceValue}>{debt}</Text>
+          <Text style={styles.balanceValue}>${debt}</Text>
+        </View>
+        <Text style={styles.transactionTitle}>Recent Transactions</Text>
+        <View style={styles.transactionContainer}>
+          <RecentTransactions/>
         </View>
         <View style={styles.buttonsContainer}>
           <Button
@@ -189,5 +192,13 @@ const styles = StyleSheet.create({
   closeButtonText: {
     fontSize: 18,
     color: 'black',
+  },
+  transactionTitle: {
+    padding: 15,
+    fontSize: 25,
+    fontWeight: '600',
+  },
+  transactionContainer: {
+
   },
 });
