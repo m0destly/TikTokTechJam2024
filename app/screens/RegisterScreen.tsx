@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text, Alert } from 'react-native';
 import { register } from '../services/authService';
 import { auth } from '@/FirebaseConfig';
-import axios from 'axios';
+import api from '../components/api';
 import { useAppContext } from '../global/AppContext';
 
 const RegisterScreen = ({ navigation }: any) => {
@@ -14,7 +14,7 @@ const RegisterScreen = ({ navigation }: any) => {
 
     const registerUser = async () => {
       try {
-          const response = await axios.post('http://localhost:3000/register', {
+          const response = await api.post('/register', {
               user,
               password,
               name,
@@ -24,7 +24,7 @@ const RegisterScreen = ({ navigation }: any) => {
           navigation.navigate('Login');
       } catch (error) {
           console.error('Registration error:', error);
-          Alert.alert("Error!", "Please Try again later");
+          Alert.alert("Error!", "Please try again later");
       }
   };
 

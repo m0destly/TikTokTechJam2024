@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, Pressable } 
 import { useFocusEffect } from 'expo-router';
 import { Avatar, Button, Icon } from 'react-native-elements';
 import { useAppContext } from '../global/AppContext';
-import axios from 'axios';
+import api from '../components/api';
 import QRCodeScanner from '../components/QRCodeScanner';
 import RecentTransactions from '../components/RecentTransactions';
 
@@ -22,7 +22,7 @@ export default function HomeScreen({ navigation } :any) {
 
   const getUserInfo = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/me', {
+      const response = await api.get('/me', {
         headers: {
           'x-access-token': token
         }
@@ -42,7 +42,7 @@ export default function HomeScreen({ navigation } :any) {
 
   const onLogOut = () => {
     setToken('');
-    console.log("Logged Out");
+    console.log("User has logged out");
   }
 
   const toExchange = () => {
@@ -199,6 +199,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   transactionContainer: {
-    maxHeight: 250,
+    maxHeight: 100,
   },
 });

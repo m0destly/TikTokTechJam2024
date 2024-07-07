@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { View, Text, FlatList, StyleSheet, ActivityIndicator } from 'react-native';
 import { useFocusEffect } from 'expo-router';
 import { ListItem } from 'react-native-elements';
-import axios from 'axios';
+import api from './api';
 import { useAppContext } from '../global/AppContext';
 
 const RecentTransactions = () => {
@@ -19,7 +19,7 @@ const RecentTransactions = () => {
     const fetchTransactions = async () => {
         try {
             if (!userID) return;
-            const response = await axios.get(`http://localhost:3000/transactions?userID=${userID}`);
+            const response = await api.get(`/transactions?userID=${userID}`);
             setTransactions(response.data);
             setLoading(false);
         } catch (error) {
@@ -53,7 +53,7 @@ const RecentTransactions = () => {
 
     return (
         <FlatList
-            data={transactions.reverse()}
+            data={transactions.slice().reverse()}
             keyExtractor={item => item.ID.toString()}
             renderItem={renderTransaction}
             initialNumToRender={10}

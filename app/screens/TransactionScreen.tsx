@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button, Alert, TextInput } from 'react-native';
 import { useAppContext } from '../global/AppContext';
-import axios from 'axios';
+import api from '../components/api';
 
 const TransactionScreen = ({navigation} : any) => {
     const { userID, userName } = useAppContext();
@@ -14,51 +14,57 @@ const TransactionScreen = ({navigation} : any) => {
 
     const changeMode = () => {
         setIsPhone(!isPhone);
+        resetFields();
+    }
+
+    const resetFields = () => {
         setUsername('');
         setPhone('');
         setTargetUser('');
         setTargetID('');
+        setAmount('');
     }
 
     const checkRecipientUser = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/getRecipientUser?user=${username}`);
-            const result = await response.json();
-            
-            if (response.status === 200) {
-                setTargetUser(result.name);
-                setTargetID(result.id);
-            } else if (!username){
+            if (!username) {
                 setTargetUser('');
                 setTargetID('');
-            } else {
-                setTargetUser('User not found');
-                setTargetID('');
+                return;
             }
+
+            const response = await api.get(`/getRecipientUser?user=${username}`);
+            
+            if (response.status === 200) {
+                setTargetUser(response.data.name);
+                setTargetID(response.data.id);
+            } 
         } catch (error) {
-          console.error(error);
+            setTargetUser('User not found');
+            setTargetID('');
+            console.error(error);
         }
     };
 
     const checkRecipientPhone = async () => {
         try {
+            if (!phone) {
+                setTargetUser('');
+                setTargetID('');
+                return;
+            }
 
-            const response = await fetch(`http://localhost:3000/getRecipientPhone?phone=${encodeURIComponent(phone)}`);
-            const result = await response.json();
+            const response = await api.get(`/getRecipientPhone?phone=${encodeURIComponent(phone)}`);
             
             if (response.status === 200) {
-              setTargetUser(result.name);
-              setTargetID(result.id);
-            } else if (!phone){
-              setTargetUser('');
-              setTargetID('');
-            } else {
-              setTargetUser('User not found');
-              setTargetID('');
+                setTargetUser(response.data.name);
+                setTargetID(response.data.id);
             }
-          } catch (error) {
+        } catch (error) {
+            setTargetUser('User not found');
+            setTargetID('');
             console.error(error);
-          }
+        }
     };
 
     const handleTransfer = async () => {
@@ -72,13 +78,14 @@ const TransactionScreen = ({navigation} : any) => {
         }
 
         try {
-            const response = await axios.post('http://localhost:3000/transfer', {
+            const response = await api.post('/transfer', {
                 fromUserId: parseInt(userID, 10),
                 toUserId: parseInt(targetID, 10),
                 amount: parseFloat(amount),
                 fromUser: userName,
                 toUser: targetUser,
             });
+            resetFields();
             Alert.alert(`You have successfully transferred ${amount} to ${targetUser}.`, response.data.message);
         } catch (error: any) {
             console.error(error);

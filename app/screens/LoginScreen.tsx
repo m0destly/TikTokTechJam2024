@@ -3,7 +3,7 @@ import { View, TextInput, Button, StyleSheet, Text, Alert } from 'react-native';
 import { login } from '../services/authService';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { useAppContext } from '../global/AppContext';
-import axios from 'axios';
+import api from '../components/api';
 import { auth } from '@/FirebaseConfig';
 
 const LoginScreen = ({ navigation }: any) => {
@@ -14,7 +14,7 @@ const LoginScreen = ({ navigation }: any) => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/login', {
+      const response = await api.post('/login', {
         user,
         password,
         phone,
