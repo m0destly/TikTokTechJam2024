@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text, Alert } from 'react-native';
 import { register } from '../services/authService';
 import { auth } from '@/FirebaseConfig';
-import Link from '../components/Link';
 import axios from 'axios';
 import { useAppContext } from '../global/AppContext';
 
