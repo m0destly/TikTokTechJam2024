@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text, Alert } from 'react-native';
-import { register } from '../services/authService';
-import { auth } from '@/FirebaseConfig';
 import api from '../components/api';
 import { useAppContext } from '../global/AppContext';
 

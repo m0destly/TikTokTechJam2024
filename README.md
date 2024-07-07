@@ -17,7 +17,7 @@
 
 4. Create database `your_database`
 
-5. Import the 3 tables `users`, `transactions` and `loans` .csv files to `your_database`
+5. Navigate to folder `backend`, then import the 3 .csv files `users`, `transactions` and `loans` to `your_database`
 
 6. Edit the Node.js server file to `your_user`, `your_password` and `your_database`
    ```ruby

@@ -1,0 +1,5 @@
+id,user,password,name,phone,balance,amountOwed
+1,iancheah,$2a$08$S87ZELV5Rf9ohnr5f1cyNufSYEPQK1.dMtNdHsb8l75F0eOm9b.MS,Ian,"+65 12345678",540.75,0.00
+2,yunhong,$2a$08$8Xvw8Z2eqHef4mHPa7/T2eEGSvSxj583fCfHtvov6p9R0e1pQ2P/i,"Yun Hong","+65 12121212",430.00,0.00
+3,liuzihe,$2a$08$a6AybzS.JSmS7FSI.pTj2utbOAiw8zeRDzXpxAslbtJHXig84BK9G,"Liu Zihe","+65 21212121",149.25,0.00
+4,Admin,$2a$08$o8lduqaK0HlbC6GrWkqAReVoKc7LzRacPEpruli3VSIHxGf9D6BDW,Test,"+65 11112222",0.00,0.00

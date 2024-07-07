@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { View, TextInput, Button, StyleSheet, Text, Alert } from 'react-native';
-import { login } from '../services/authService';
+import React, { useState } from 'react';
+import { View, TextInput, Button, StyleSheet, Text } from 'react-native';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { useAppContext } from '../global/AppContext';
 import api from '../components/api';
-import { auth } from '@/FirebaseConfig';
 
 const LoginScreen = ({ navigation }: any) => {
   const { phone, token, setToken } = useAppContext();

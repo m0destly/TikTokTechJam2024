@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, Pressable } from 'react-native';
+import React, { useState, useCallback } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Pressable } from 'react-native';
 import { useFocusEffect } from 'expo-router';
-import { Avatar, Button, Icon } from 'react-native-elements';
+import { Button, Icon } from 'react-native-elements';
 import { useAppContext } from '../global/AppContext';
 import api from '../components/api';
 import QRCodeScanner from '../components/QRCodeScanner';

@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Alert, View, StyleSheet, Button, Linking, Text } from "react-native";
 import { Camera, CameraView } from "expo-camera";
-import { useNavigation } from "@react-navigation/native";
 
 const QRCodeScanner = () => {
   const [hasPermission, setHasPermission] = useState(false);
   const [scanned, setScanned] = useState(false);
-  const navigation = useNavigation();
 
   useEffect(() => {
     const getCameraPermissions = async () => {
