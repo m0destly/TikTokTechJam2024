@@ -76,7 +76,7 @@ export default function HomeScreen({ navigation } :any) {
           <Text style={styles.balanceValue}>${balance}</Text>
         </View>
         <View style={styles.balanceContainer}>
-          <Text style={styles.balanceText}>Amount you owe</Text>
+          <Text style={styles.balanceText}>Amount Owed/Loans Debt</Text>
           <Text style={styles.balanceValue}>${debt}</Text>
         </View>
         <Text style={styles.transactionTitle}>Recent Transactions</Text>
@@ -199,6 +199,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   transactionContainer: {
-
+    maxHeight: 250,
   },
 });

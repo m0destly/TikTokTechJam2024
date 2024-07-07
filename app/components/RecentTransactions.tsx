@@ -18,7 +18,7 @@ const RecentTransactions = () => {
 
     const fetchTransactions = async () => {
         try {
-            console.log(userID);
+            if (!userID) return;
             const response = await axios.get(`http://localhost:3000/transactions?userID=${userID}`);
             setTransactions(response.data);
             setLoading(false);
@@ -56,6 +56,8 @@ const RecentTransactions = () => {
             data={transactions.reverse()}
             keyExtractor={item => item.ID.toString()}
             renderItem={renderTransaction}
+            initialNumToRender={10}
+            maxToRenderPerBatch={5}
         />
     );
 };
