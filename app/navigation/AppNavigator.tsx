@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
-import ProfileScreen from '../screens/ProfileScreen';
+import LoanApplicationScreen from '../screens/LoanApplicationScreen';
 import TransactionScreen from '../screens/TransactionScreen';
 import AuthNavigator from './AuthNavigator';
 import { useAppContext } from '../global/AppContext';
@@ -16,7 +16,7 @@ const AppNavigator = () => {
       {token ? (
         <>
           <AppStack.Screen name="Home" component={HomeScreen} />
-          <AppStack.Screen name="Profile" component={ProfileScreen} />
+          <AppStack.Screen name="Loan" component={LoanApplicationScreen} />
           <AppStack.Screen name="Transaction" component={TransactionScreen} />
         </>
       ) : (

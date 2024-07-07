@@ -45,8 +45,8 @@ export default function HomeScreen({ navigation } :any) {
     console.log("User has logged out");
   }
 
-  const toExchange = () => {
-    // opens up the exchange page
+  const toLoan = () => {
+    navigation.navigate("Loan");
   }
 
   const openScanner = () => {
@@ -97,10 +97,10 @@ export default function HomeScreen({ navigation } :any) {
             icon={<Icon name="qr-code-scanner" type="material" size={20} color="white" />}
           />
           <Button
-            onPress={toExchange}
-            title="Exchange"
+            onPress={toLoan}
+            title="Loan"
             buttonStyle={styles.button}
-            icon={<Icon name="swap-horiz" type="material" color="white" />}
+            icon={<Icon name="description" type="material" color="white" />}
           />
         </View>
       </View>

@@ -61,7 +61,7 @@ const AuthOtp = ({ navigation }: any) => {
             keyboardType="phone-pad"
             autoComplete='tel'
             editable={display}
-            style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 10, marginTop: 20 }}
+            style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 10, marginTop: 20, padding: 10, }}
           />
           <Text>Example: +65 00000000</Text>
           <Button title="Send Verification SMS" onPress={sendVerification} />
