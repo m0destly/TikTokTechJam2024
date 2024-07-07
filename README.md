@@ -11,13 +11,13 @@
    npm install
    ```
 
-2. Follow the setup instructions
+2. Set up MySQL if you have not done so
 
 3. Start the local MySQL server and establish local connection
 
 4. Create database `tttj`
 
-5. Import the 2 tables, `users` and `transactions` csv files to `tttj`
+5. Import the 2 tables, `users` and `transactions` .csv files to `tttj`
 
 6. Start the Node.js server file
    ```bash
@@ -30,7 +30,7 @@
    ```
 
 ## Test Account
-- Number: `+65 12345678`
-- Verification Code: `654321`
+- Number: +65 12345678
+- Verification Code: 654321
 - Username:
 - Password: `wordpass`
