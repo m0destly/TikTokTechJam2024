@@ -19,7 +19,7 @@
 
 5. Navigate to folder `backend`, then import the 3 .csv files `users`, `transactions` and `loans` to `your_database`
 
-6. Edit the Node.js server file to `your_user`, `your_password` and `your_database`
+6. Edit the Node.js server file `mysql.js` in folder `backend` to `your_user`, `your_password` and `your_database`
    ```ruby
    const db = mysql.createConnection({
     host: 'localhost',
@@ -47,13 +47,13 @@
    ```
 
 ## Test Account
-- Number: +65 12345678
+- Phone Number: +65 12345678
 - Verification Code: 654321
 - Username: iancheah
 - Password: wordpass
 
 ## Alternate Test Account 
-- Number: +65 12121212
+- Phone Number: +65 12121212
 - Verification Code: 123456
 - Username: yunhong
 - Password: securepass

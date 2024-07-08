@@ -7,27 +7,24 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
-        "NSCameraUsageDescription": "To scan QR codes",
-        "NSMicrophoneUsageDescription": "Test"
+        "NSCameraUsageDescription": "Allow TikTokTechJam to access your camera",
+        "NSMicrophoneUsageDescription": "Allow TikTokTechJam to access your microphone"
       }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
       "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "output": "static"
     },
     "plugins": [
       "expo-router",
@@ -35,8 +32,7 @@
         "expo-camera",
         {
           "cameraPermission": "Allow TikTokTechJam to access your camera",
-          "microphonePermission": "Allow TikTokTechJam to access your microphone",
-          "recordAudioAndroid": true
+          "microphonePermission": "Allow TikTokTechJam to access your microphone"
         }
       ]
     ],

@@ -7,7 +7,6 @@ const RegisterScreen = ({ navigation }: any) => {
     const { phone } = useAppContext();
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
-    const [message, setMessage] = useState('');
     const [name, setName] = useState('');
 
     const registerUser = async () => {
@@ -52,7 +51,6 @@ const RegisterScreen = ({ navigation }: any) => {
             editable={false}
           />
           <Button title="Register" onPress={registerUser} />
-          {message && <Text>{message}</Text>}
         </View>
       );
 }

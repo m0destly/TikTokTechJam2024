@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
 
-// Define the type of the context value
 type MyContextType = {
   phone: string;
   setPhone: (value: string) => void;
@@ -12,10 +11,8 @@ type MyContextType = {
   setUserName: (value: string) => void;
 }
 
-// Create a context object
 const AppContext = createContext<MyContextType | undefined>(undefined);
 
-// Create a provider component
 export const AppProvider = ({ children }: any) => {
   const [phone, setPhone] = useState('');
   const [token, setToken] = useState('');
@@ -40,7 +37,6 @@ export const AppProvider = ({ children }: any) => {
   );
 };
 
-// Custom hook to use the context
 export const useAppContext = () => {
   const context = useContext(AppContext);
   if (!context) {

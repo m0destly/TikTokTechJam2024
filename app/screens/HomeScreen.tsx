@@ -8,7 +8,6 @@ import QRCodeScanner from '../components/QRCodeScanner';
 import RecentTransactions from '../components/RecentTransactions';
 
 export default function HomeScreen({ navigation } :any) {
-
   const { token, setToken, setUserID, userName, setUserName } = useAppContext();
   const [balance, setBalance] = useState('');
   const [debt, setDebt] = useState('');

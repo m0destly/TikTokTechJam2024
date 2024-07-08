@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Button, Alert, TextInput } from 'react-native';
 import { useAppContext } from '../global/AppContext';
 import api from '../components/api';
 
-const TransactionScreen = ({navigation} : any) => {
+const TransactionScreen = () => {
     const { userID, userName } = useAppContext();
     const [username, setUsername] = useState('');
     const [phone, setPhone] = useState('');

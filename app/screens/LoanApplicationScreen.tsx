@@ -6,7 +6,7 @@ import api from '../components/api';
 import { useAppContext } from '../global/AppContext';
 import { Platform } from 'react-native';
 
-export default function LoanApplicationScreen({ navigation }: any) {
+export default function LoanApplicationScreen() {
   const INTEREST_RATE = 0.02;
   const MAX_DEBT = 500;
   const { token, setUserID, userName, setUserName } = useAppContext();

@@ -6,7 +6,7 @@ import firebase from 'firebase/compat';
 import { useAppContext } from '../global/AppContext';
 
 const AuthOtp = ({ navigation }: any) => {
-  const {phone, setPhone} = useAppContext();
+    const { phone, setPhone } = useAppContext();
     const [code, setCode] = useState('');
     const [verificationId, setVerificationId] = useState('');
     const [message, setMessage] = useState('');
@@ -72,7 +72,7 @@ const AuthOtp = ({ navigation }: any) => {
                 value={code}
                 onChangeText={setCode}
                 keyboardType="number-pad"
-                style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 20 }}
+                style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 20, padding: 10 }}
               />
               <Button title="Verify Code" onPress={confirmCode} />
             </>

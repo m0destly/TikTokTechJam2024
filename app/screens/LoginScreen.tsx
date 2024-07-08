@@ -5,7 +5,7 @@ import { useAppContext } from '../global/AppContext';
 import api from '../components/api';
 
 const LoginScreen = ({ navigation }: any) => {
-  const { phone, token, setToken } = useAppContext();
+  const { phone, setToken } = useAppContext();
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
