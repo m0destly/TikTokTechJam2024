@@ -58,7 +58,6 @@ const AuthOtp = ({ navigation }: any) => {
             placeholder="Phone Number"
             value={phone}
             onChangeText={setPhone}
-            keyboardType="phone-pad"
             autoComplete='tel'
             editable={display}
             style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 10, marginTop: 20, padding: 10, }}
